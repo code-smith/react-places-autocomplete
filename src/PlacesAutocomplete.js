@@ -49,8 +49,10 @@ class PlacesAutocomplete extends Component {
 
     const { highlightFirstSuggestion } = this.props
 
+		const filteredPredictions = this.props.filterPredictions ? predictions.filter(this.props.filterPredictions) : predictions ;
+
     this.setState({
-      autocompleteItems: predictions.map((p, idx) => ({
+      autocompleteItems: filteredPredictions.map((p, idx) => ({
         suggestion: p.description,
         placeId: p.place_id,
         active: (highlightFirstSuggestion && idx === 0 ? true : false),
@@ -289,6 +291,7 @@ PlacesAutocomplete.propTypes = {
       throw new Error('\'inputProps\' must have \'onChange\'.')
     }
   },
+	filterPredictions: PropTypes.func,
   onError: PropTypes.func,
   clearItemsOnError: PropTypes.bool,
   onSelect: PropTypes.func,
@@ -334,6 +337,7 @@ PlacesAutocomplete.defaultProps = {
   options: {},
   debounce: 200,
   highlightFirstSuggestion: false,
+	filterPredictions:null,
 }
 
 export default PlacesAutocomplete
