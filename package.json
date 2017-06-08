@@ -42,7 +42,7 @@
     "geocoder"
   ],
   "files": [
-    "dist",
+    "src",
     "README.md"
   ],
   "author": "Ken Hibino <ken.hibino7@gmail.com> (http://www.kenhibino.com/)",
